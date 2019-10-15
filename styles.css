@@ -1,0 +1,64 @@
+h1 {
+	font-size: 8px;
+}
+
+.rojo {
+	color: red;
+	font-size: 20px;
+}
+
+.fondo-rojo {
+	background-color: red;
+}
+
+.fondo-imagen {
+	background-image: url('perro.jpg');
+	background-size: cover;
+	/*
+	background-size: contain;
+	background-repeat: space;
+	*/
+}
+
+#mi-parrafo {
+	font-size: 24px;
+}
+
+.menu li {
+	display: inline;
+}
+
+.btn {
+	display: block;
+}
+
+.caja {
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+	border: 2px solid #333;
+	display: inline-block;
+	margin: 30px;
+}
+
+.my-form {
+	width: 60%;
+	margin: 10px auto;
+}
+
+label, input, .menu {
+	width: 100%;
+	font-size: 16px;
+	background-color: red;
+}
+
+input[type="submit"] {
+	width: 80px;
+	background-color: transparent;
+}
+
+
+
+
+
+

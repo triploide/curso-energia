@@ -1,0 +1,28 @@
+.menu {
+	background-color: #ccc;
+}
+
+.menu ol {
+	display: flex;
+	justify-content: space-around;
+}
+
+.menu li {
+	list-style: none;
+}
+
+.peli h2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.peli img {
+	max-width: 100%
+}
+
+.aside {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+}

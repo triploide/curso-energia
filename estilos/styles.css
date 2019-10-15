@@ -1,0 +1,18 @@
+.contenedor {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	min-height: 200px;
+	background-color: #ccc;
+	justify-content: space-between;
+	align-items: center;
+}
+.caja {
+	width: 100px;
+	height: 100px;
+	background-color: tomato;
+	margin: 10px;
+}
+.ultimo {
+	order: 1
+}
