@@ -1,0 +1,45 @@
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+.yellow{
+    background-color: tomato;
+}
+/* 
+body{
+    max-width: 1200px;
+    text-align: center;
+    margin: auto;
+} */
+
+@media (max-width: 420px) {
+    .red, .green, .blue, .yellow{
+        width: 80%;
+        height: 250px;
+        margin: 10%;
+        display: block;
+    }
+}
+
+@media (min-width: 421px) {
+    .red, .green, .blue, .yellow{
+        height: 250px;
+        width: 34%;
+        margin: 7%;
+        display: inline-block;
+    }
+}
+@media (min-width: 721px) {
+
+    .red, .green, .blue, .yellow{
+        height: 250px;
+        width: 22%;
+        margin: 1.25%;
+        display: inline-block;
+    }
+}
