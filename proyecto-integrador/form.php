@@ -4,6 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<?php include 'tpl/head.php'; ?>
+	<script>
+		$(document).ready(function () {
+			$('input').on('blur', function (e) {
+				var valor = $(this).val();
+				if (valor.length <= 5) {
+					$(this).addClass('is-invalid');
+				}
+			});
+			
+			$('input').on('focus', function () {
+				$(this).removeClass('is-invalid');
+			});
+		}); //end document ready
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -16,34 +30,21 @@
 			<div class="col-md-9">
 				<form action="?">
 					<div class="form-group">
-						<label for="nombre">Nombre</label>
-						<input class="form-control is-invalid" type="text">
+						<label for="titulo">Título</label>
+						<input class="form-control" type="text" id="titulo">
 						<div class="valid-feedback">Todo salió bien</div>
 						<div class="invalid-feedback">Todo salió mal</div>
 					</div>
 
 					<div class="form-group">
-						<label for="jquery">Test con jQuery</label>
-						<input id="input-jquery" class="form-control" type="text">
+						<label for="duracion">Duración</label>
+						<input class="form-control" type="text" name="duracion" id="duracion">
 						<div class="valid-feedback">Todo salió bien</div>
 						<div class="invalid-feedback">Todo salió mal</div>
 					</div>
 
-					<p>Elegí una opción</p>
-					
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion1">
-						<label for="opcion1" class="form-check-label">Opción 1</label>
-					</div>
-
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion2">
-						<label for="opcion2" class="form-check-label">Opción 1</label>
-					</div>
-
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion3">
-						<label for="opcion3" class="form-check-label">Opción 1</label>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Enviar</button>
 					</div>
 
 				</form>

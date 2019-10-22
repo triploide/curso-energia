@@ -19,10 +19,6 @@
 				mostrarVentana();
 			});
 
-			$('#tabla .btn-primary').on('click', function (e) {
-				e.preventDefault();
-				mostrarVentana();
-			});
 
 			/*
 			$('selector --igual que css').on('nombre del evento', function () {
