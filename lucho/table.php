@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Navbar</title>
+	<title>Font awesome</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<script>
 		$(document).ready(function () {
-			$('#seccion').text('Editado con jQuery');
-			$('.nav-item').text('Nav con jQuery');
-			$('span').text('span con jQuery');
-			$('#input-jquery').addClass('is-invalid');
-			setTimeout( function () {
-				var texto = $('#option').text();
-				$('#option').text(texto+' Apurate!');}, 2000);
+			$('#tabla .btn-danger').on('click', function (e) {
+				e.preventDefault();
+				$('#ventana').modal('show');
+			});
 		});
-
-
-
 	</script>
-
 </head>
 <body>
 	<div class="container">
@@ -70,42 +63,59 @@
 				</nav>
 			</div>
 			<div class="col-md-9">
-				<form action="?">
-					<div class="form-group">
-						<label for="nombre">Nombre</label>
-						<input class="form-control is-invalid" type="text">
-						<div class="valid-feedback">Todo salió bien</div>
-						<div class="invalid-feedback">Todo salió mal</div>
-					</div>
-
-					<div class="form-group">
-						<label for="jquery">Test con jQuery</label>
-						<input id="input-jquery" class="form-control" type="text">
-						<div class="valid-feedback">Todo salió bien</div>
-						<div class="invalid-feedback">Todo salió mal</div>
-					</div>
-
-					<p id="option">Elegí una opción</p>
-					
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion1">
-						<label for="opcion1" class="form-check-label">Opción 1</label>
-					</div>
-
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion2">
-						<label for="opcion2" class="form-check-label">Opción 1</label>
-					</div>
-
-					<div class="form-check">
-						<input type="checkbox" name="opciones[]" class="form-check-input" id="opcion3">
-						<label for="opcion3" class="form-check-label">Opción 1</label>
-					</div>
-
-				</form>
+				<table id="tabla" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Lorem</td>
+							<td>Ipsum</td>
+							<td>
+								<a title="Editar" class="btn btn-primary" href="#">
+									<span class="fa fa-pencil"></span>
+								</a>
+								<a title="Borrar" class="btn btn-danger" href="/">
+									<span class="fa fa-trash"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Lorem</td>
+							<td>Ipsum</td>
+							<td>
+								<a title="Editar" class="btn btn-primary" href="#">
+									<span class="fa fa-pencil"></span>
+								</a>
+								<a title="Borrar" class="btn btn-danger" href="#">
+									<span class="fa fa-trash"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Lorem</td>
+							<td>Ipsum</td>
+							<td>
+								<a title="Editar" class="btn btn-primary" href="#">
+									<span class="fa fa-pencil"></span>
+								</a>
+								<a title="Borrar" class="btn btn-danger" href="#">
+									<span class="fa fa-trash"></span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 	</div>
+
+
+	
 </body>
 </html>
