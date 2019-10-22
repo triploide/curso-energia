@@ -12,10 +12,12 @@
 					$(this).addClass('is-invalid');
 				}
 			});
-			
+
 			$('input').on('focus', function () {
 				$(this).removeClass('is-invalid');
 			});
+
+			console.log( $('.is-invalid').length );
 		}); //end document ready
 	</script>
 </head>
