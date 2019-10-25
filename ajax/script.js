@@ -1,3 +1,13 @@
+function validar ($el) {
+	$el.addClass('is-valid');
+	$el.removeClass('is-invalid');
+}
+
+function invalidar ($el) {
+	$el.addClass('is-invalid');
+	$el.removeClass('is-valid');
+}	
+
 $(document).ready(function () {
 
 	$('#titulo').on('blur', function () {
@@ -15,4 +25,16 @@ $(document).ready(function () {
 			}
 		})
 	});
+
+	$('#duracion').on('keyup', function () {
+		var val = $(this).val();
+		var regex = /^[0-9]*$/;
+		
+		if (!regex.test(val)) {
+			invalidar($(this));
+		} else {
+			validar($(this));
+		}
+	});
+
 });
