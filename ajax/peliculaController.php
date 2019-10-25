@@ -18,3 +18,5 @@ $json = json_encode(['existe' => $existe]);
 header("Content-type:application/json");
 echo $json;
 
+filter_var('bob@example.com', FILTER_VALIDATE_EMAIL);
+
