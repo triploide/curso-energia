@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Replace</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Formulario</h1>
+
+		<form action="?">
+			<div class="form-group">
+				<label for="titulo">Título</label>
+				<input class="form-control" type="text" name="titulo" id="titulo">
+			</div>
+
+			<div class="form-group">
+				<label for="duracion">Duración</label>
+				<input class="form-control" type="text" name="duracion" id="duracion">
+			</div>
+
+			<div class="form-group">
+				<label for="tipo">Tipo <span id="loader" style="display: none" class="fa fa-spin fa-spinner"></span></label>
+				<select class="form-control" name="tipo" id="tipo">
+					<option value="">Elegir</option>
+					<option value="pelicula">Película</option>
+					<option value="serie">Serie</option>
+					<option value="error">Opción errónea</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="genero">Género</label>
+				<select class="form-control" name="genero" id="genero">
+					<option value="">Elegir</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
