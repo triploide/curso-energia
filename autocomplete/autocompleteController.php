@@ -11,14 +11,14 @@ $stmt = $pdo->prepare('SELECT first_name, last_name, id FROM actors where first_
 $stmt->execute();
 
 //recuperar
-$actores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$actores = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 $respuesta = [];
 foreach ($actores as $actor) {
 	$respuesta[] = [
-		'label' => $actor['first_name'] . ' ' . $actor['last_name'],
-		'value' => $actor['first_name'] . ' ' . $actor['last_name'],
-		'id' => $actor['id'],
+		'label' => $actor->first_name . ' ' . $actor->last_name,
+		'value' => $actor->first_name . ' ' . $actor->last_name,
+		'id' => $actor->id,
 	];
 }
 
