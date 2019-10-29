@@ -39,6 +39,7 @@
 			<div class="form-group">
 				<label for="actor">Actor</label>
 				<input class="form-control" type="text" name="actor" id="actor">
+				<input type="hidden" name="actor_id" id="actor_id">
 			</div>
 
 			<div class="form-group">
