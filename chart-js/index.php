@@ -26,6 +26,8 @@
 <body>
 	<div class="container">
 		<h1>Chart JS</h1>
+
+		<canvas id="grafico">Tu navegador es muy viejito.</canvas>
 	</div>
 </body>
 </html>
