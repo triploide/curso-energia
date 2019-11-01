@@ -27,6 +27,18 @@
 	<div class="container">
 		<h1>Chart JS</h1>
 
+		<select name="fecha" id="fecha">
+			<option value="2000-01-01">Últimos 10 años</option>
+			<option value="2005-01-01">Últimos 5 años</option>
+			<option value="2010-01-01">Último  año</option>
+		</select>
+
+		<select name="rating" id="rating">
+			<option value="1">1</option>
+			<option value="5">5</option>
+			<option value="9">9</option>
+		</select>
+
 		<canvas id="grafico">Tu navegador es muy viejito.</canvas>
 	</div>
 </body>

@@ -2,13 +2,21 @@
 
 require "conn.php";
 
+
+//where genre_id IS NOT NULL
+
 $stmt = $pdo->prepare('
 	SELECT COUNT(id) as data, CAST(rating as UNSIGNED) as label
 	FROM movies
+	WHERE release_date >= :fecha
+	AND rating >= :rating
 	GROUP BY label
 ');
 
-$stmt->execute();
+$stmt->execute([
+	':fecha' => $_GET['fecha'],
+	':rating' => $_GET['rating'],
+]);
 
 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
