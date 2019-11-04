@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('#tabla-peliculas').DataTable({
+	$('#tabla-generos').DataTable({
 		serverSide: true,
 		ajax: {
 			url: 'datatableController.php',
@@ -7,21 +7,15 @@ $(document).ready(function () {
 		columnDefs: [
 			{
 				render: function (data, b, row) {
-					return row.title
+					return row.name
 				},
 				targets: 0
 			},
 			{
 				render: function (data, b, row) {
-					return row.rating
+					return row.ranking
 				},
 				targets: 1
-			},
-			{
-				render: function (data, b, row) {
-					return row.genre
-				},
-				targets: 2
 			}
 		]
 	});

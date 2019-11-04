@@ -31,12 +31,12 @@
 
 	<div class="container">
 
-		<table id="tabla-peliculas" class="table table-bordered table-striped">
+		<table id="tabla-generos" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th>Título</th>
-					<th>Rating</th>
-					<th>Género</th>
+					<th>Genero</th>
+					<th>Ranking</th>
+					
 				</tr>
 			</thead>
 			<tbody>

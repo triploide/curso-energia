@@ -2,16 +2,16 @@
 
 require "conn.php";
 
-$columns = ['name', 'ranking'];
+$columns = ['title', 'rating', 'genre'];
 $order = $columns[$_GET['order'][0]['column']];
 $dir = $_GET['order'][0]['dir'];
 
 //data
 $stmtData = $pdo->prepare('
-	SELECT name, ranking
-	FROM genres
-	
-	WHERE name like :search
+	SELECT title, rating, genres.name as genre
+	FROM movies
+	INNER JOIN genres on genres.id = movies.genre_id
+	WHERE title like :search
 	ORDER BY '. $order .' ' . $dir . '
 	LIMIT '. $_GET['length'] .'
 	OFFSET '. $_GET['start'] .'
@@ -23,19 +23,19 @@ $resultados = $stmtData->fetchAll(PDO::FETCH_ASSOC);
 
 //total
 $stmtTotal = $pdo->prepare('
-	SELECT COUNT(genres.id) as total
-	FROM genres
-	
+	SELECT COUNT(movies.id) as total
+	FROM movies
+	INNER JOIN genres on genres.id = movies.genre_id
 ');
 $stmtTotal->execute();
 $total = $stmtTotal->fetchColumn();
 
 //total
 $stmtFiltered = $pdo->prepare('
-	SELECT COUNT(genres.id) as total
-	FROM genres
-	
-	WHERE name like :search
+	SELECT COUNT(movies.id) as total
+	FROM movies
+	INNER JOIN genres on genres.id = movies.genre_id
+	WHERE title like :search
 ');
 $stmtFiltered->execute([
 	':search' => $_GET['search']['value'] . "%"
