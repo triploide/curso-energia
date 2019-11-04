@@ -1,8 +1,11 @@
 $(document).ready(function () {
-	$('#tabla-peliculas').DataTable({
+	var datatable = $('#tabla-peliculas').DataTable({
 		serverSide: true,
 		ajax: {
 			url: 'datatableController.php',
+			data: function (data) {
+				data.genre_id = $('#genre').val();
+			}
 		},
 		columnDefs: [
 			{
@@ -23,6 +26,11 @@ $(document).ready(function () {
 				},
 				targets: 2
 			}
-		]
+		],
 	});
+
+	$('#genre').on('change', function () {
+		var genre_id = $(this).val();
+		datatable.ajax.reload();
+	})
 });

@@ -31,6 +31,13 @@
 
 	<div class="container">
 
+		<select name="genre" id="genre">
+			<option value="4">Acción</option>
+			<option value="7">Animación</option>
+			<option value="8">Aventuras</option>
+			<option value="5">Ciencia Ficción</option>
+		</select>
+
 		<table id="tabla-peliculas" class="table table-bordered table-striped">
 			<thead>
 				<tr>
