@@ -35,22 +35,70 @@ $(document).ready(function () {
 			borderColor: '#FF6F61',
 			borderWidth: 3,
 			fill: true
-		}]
+		}],
 	}
+
+	var grafico;
+
+	var fecha = $('#fecha').val(); //inicializar las variables para que funcione el gráfico
+	var rating = $('#rating').val();  //inicializar las variables para que funcione el gráfico
 
 	$.ajax({
 		url: 'chartController.php',
 		type: 'GET',
+		data: {
+			fecha: fecha,
+			rating: rating
+		},
 		success: function (resultado) {
 			data.labels = resultado.labels;
 			data.datasets[0].data = resultado.data;
 
-			var grafico = new Chart(contexto, {
-				type: 'line',
-				data: data
+			grafico = new Chart(contexto, {
+				type: 'horizontalBar',
+				data: data,
+				options: {
+			        scales: {
+			            xAxes: [{
+			                ticks: {
+			                    beginAtZero: true
+			                }
+			            }]
+			        }
+			    }
 			});
 		}
 	});
+
+	//on change fecha
+	$('#fecha, #rating').on('change', function () {
+		var fecha = $('#fecha').val();
+		var rating = $('#rating').val();
+
+		$.ajax({
+			url: 'chartController.php',
+			type: 'GET',
+			data: {
+				fecha: fecha,
+				rating: rating
+			},
+			success: function (resultado) {
+				console.log('test2')
+				grafico.data.labels = resultado.labels;
+				grafico.data.datasets[0].data = resultado.data;
+				grafico.update();
+			}
+		})
+	});
+
+	//ajax
+
+	//on success ajax
+
+	//seteo otra vez
+	//grafico.data.labels = resultado.labels;
+	//grafico.data.datasets[0].data = resultado.data;
+	//grafico.update();
 
 	
 });
