@@ -3,8 +3,9 @@
 require "conn.php";
 
 $stmt = $pdo->prepare('
-	SELECT COUNT(id) as data, CAST(rating as UNSIGNED) as label
+	SELECT COUNT(genre_id) as data, name as label
 	FROM movies
+	inner join genres on genres.id=movies.genre_id
 	GROUP BY label
 ');
 
@@ -18,7 +19,7 @@ $data = [
 ];
 
 foreach ($resultados as $resultado) {
-	$data['labels'][] = 'Rating ' . $resultado['label'];
+	$data['labels'][] = 'Genero ' . $resultado['label'];
 	$data['data'][] = $resultado['data'];
 }
 
