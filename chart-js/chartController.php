@@ -6,8 +6,9 @@ require "conn.php";
 //where genre_id IS NOT NULL
 
 $stmt = $pdo->prepare('
-	SELECT COUNT(genre_id) as data, name as label
+	SELECT COUNT(genre_id) as data, genres.name as label
 	FROM movies
+	INNER JOIN genres ON genres.id = movies.genre_id
 	WHERE release_date >= :fecha
 	AND rating >= :rating
 	GROUP BY label
@@ -26,7 +27,7 @@ $data = [
 ];
 
 foreach ($resultados as $resultado) {
-	$data['labels'][] = 'Genero ' . $resultado['label'];
+	$data['labels'][] = $resultado['label'];
 	$data['data'][] = $resultado['data'];
 }
 
