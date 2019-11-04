@@ -27,16 +27,21 @@
 	<script src="script.js"></script>
 </head>
 <body>
-	<h1>Datatable</h1>
-
 	<div class="container">
+		<h1 class="mb-5">Datatable</h1>
 
-		<select name="genre" id="genre">
-			<option value="4">Acción</option>
-			<option value="7">Animación</option>
-			<option value="8">Aventuras</option>
-			<option value="5">Ciencia Ficción</option>
-		</select>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<select class="form-control" name="genre" id="genre">
+						<option value="4">Acción</option>
+						<option value="7">Animación</option>
+						<option value="8">Aventuras</option>
+						<option value="5">Ciencia Ficción</option>
+					</select>
+				</div>
+			</div>
+		</div>
 
 		<table id="tabla-peliculas" class="table table-bordered table-striped">
 			<thead>
