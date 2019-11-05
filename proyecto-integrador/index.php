@@ -5,6 +5,8 @@
 	<title>Formulario</title>
 	<?php include 'tpl/head.php'; ?>
 
+	
+
 	<script>
 		function mostrarVentana () {
 			$('#ventana').modal('show');

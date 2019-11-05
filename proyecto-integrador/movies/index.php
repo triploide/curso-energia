@@ -5,6 +5,8 @@
 	<title>Formulario</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
 
+	<script src="../js/movies.js"></script>
+
 	<script>
 		function mostrarVentana () {
 			$('#ventana').modal('show');
@@ -40,51 +42,16 @@
 				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
-				<table id="tabla" class="table table-bordered table-striped">
+				<table id="table-movies" class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Apellido</th>
+							<th>Título</th>
+							<th>Duración</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Lorem</td>
-							<td>Ipsum</td>
-							<td>
-								<a title="Editar" class="btn btn-primary" href="#">
-									<span class="fa fa-pencil"></span>
-								</a>
-								<a title="Borrar" class="btn btn-danger" href="/">
-									<span class="fa fa-trash"></span>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Lorem</td>
-							<td>Ipsum</td>
-							<td>
-								<a title="Editar" class="btn btn-primary" href="#">
-									<span class="fa fa-pencil"></span>
-								</a>
-								<a title="Borrar" class="btn btn-danger" href="#">
-									<span class="fa fa-trash"></span>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Lorem</td>
-							<td>Ipsum</td>
-							<td>
-								<a title="Editar" class="btn btn-primary" href="#">
-									<span class="fa fa-pencil"></span>
-								</a>
-								<a title="Borrar" class="btn btn-danger" href="#">
-									<span class="fa fa-trash"></span>
-								</a>
-							</td>
-						</tr>
+						
 					</tbody>
 				</table>
 			</div>
