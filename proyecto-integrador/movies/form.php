@@ -3,15 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Formulario</title>
-	<?php include 'tpl/head.php'; ?>
+	<?php include __DIR__ . '/../tpl/head.php'; ?>
 </head>
 <body>
 	<div class="container">
-		<?php include 'tpl/nav.php' ?>
+		<?php include __DIR__ . '/../tpl/nav.php' ?>
 
-		<div class="row">
+		<main class="row">
 			<div class="col-md-3">
-				<?php include 'tpl/menu.php' ?>
+				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
 				<form action="/php/controllers/movieController.php" method="POST">
@@ -53,7 +53,7 @@
 
 				</form>
 			</div>
-		</div>
+		</main>
 
 	</div>
 </body>
