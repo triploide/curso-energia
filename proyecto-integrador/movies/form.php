@@ -33,7 +33,7 @@ function getValue($value) {
 				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
-				<form action="/php/controllers/movieController.php" method="POST">
+				<form action="../php/controllers/movieController.php" method="POST">
 					<div class="form-group">
 						<label for="title">Título</label>
 						<input class="form-control" type="text" name="title" id="title" value="<?php echo getValue('title') ?>">
@@ -64,6 +64,8 @@ function getValue($value) {
 						</select>
 						<div class="invalid-feedback">Tenés que seleccionar un género</div>
 					</div>
+
+					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
 
 					<div class="form-group d-flex mt-5 justify-content-end">
 						<button type="submit" class="btn btn-primary">Enviar</button>
