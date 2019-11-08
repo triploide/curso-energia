@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Formulario - Maxi</title>
+	<title>Formulario - Ministerio</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
 
 	<script src="../js/movies.js"></script>
