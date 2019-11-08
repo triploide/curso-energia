@@ -10,13 +10,10 @@
 	<div class="collapse navbar-collapse justify-content-end" id="menu">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a href="#" class="nav-link">Uno</a>
+				<a href="../movies" class="nav-link">Películas</a>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="nav-link">Uno</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">Uno</a>
+				<a href="../genres" class="nav-link">Géneros</a>
 			</li>
 		</ul>
 	</div>

@@ -4,22 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<?php include 'tpl/head.php'; ?>
-	<script>
-		$(document).ready(function () {
-			$('input').on('blur', function (e) {
-				var valor = $(this).val();
-				if (valor.length <= 5) {
-					$(this).addClass('is-invalid');
-				}
-			});
-
-			$('input').on('focus', function () {
-				$(this).removeClass('is-invalid');
-			});
-
-			console.log( $('.is-invalid').length );
-		}); //end document ready
-	</script>
 </head>
 <body>
 	<div class="container">
@@ -30,22 +14,40 @@
 				<?php include 'tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
-				<form action="?">
+				<form action="/php/controllers/movieController.php" method="POST">
 					<div class="form-group">
-						<label for="titulo">Título</label>
-						<input class="form-control" type="text" id="titulo">
-						<div class="valid-feedback">Todo salió bien</div>
-						<div class="invalid-feedback">Todo salió mal</div>
+						<label for="title">Título</label>
+						<input class="form-control" type="text" name="title" id="title">
+						<div class="invalid-feedback">La película ya existe</div>
 					</div>
 
 					<div class="form-group">
-						<label for="duracion">Duración</label>
-						<input class="form-control" type="text" name="duracion" id="duracion">
-						<div class="valid-feedback">Todo salió bien</div>
-						<div class="invalid-feedback">Todo salió mal</div>
+						<label for="length">Duración</label>
+						<input class="form-control" type="text" name="length" id="length">
+						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
 					</div>
 
 					<div class="form-group">
+						<label for="rating">Rating</label>
+						<input class="form-control" type="text" name="rating" id="rating">
+						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
+					</div>
+
+					<div class="form-group">
+						<label for="release_date">Fecha de estreno</label>
+						<input class="form-control" type="text" name="release_date" id="release_date">
+					</div>
+
+					<div class="form-group">
+						<label for="genre_id">Género</label>
+						<select class="form-control" name="genre_id" id="genre_id">
+							<option value="">Seleccionar</option>
+						</select>
+						<div class="invalid-feedback">Tenés que seleccionar un género</div>
+					</div>
+
+
+					<div class="form-group d-flex mt-5 justify-content-end">
 						<button type="submit" class="btn btn-primary">Enviar</button>
 					</div>
 
