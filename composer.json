@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "require": {
         "nesbot/carbon": "^1.39"
     }
+=======
+>>>>>>> d3b9b69e32dbf61ab4406a8ecb4064dffbf78d3b
 }

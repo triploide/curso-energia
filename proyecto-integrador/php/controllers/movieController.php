@@ -3,6 +3,8 @@ require_once __DIR__ . '/../conn.php';
 
 
 
+require_once __DIR__ . '/../conn.php';
+
 //editar fecha (Datepicker - Carbon - composer)
 /*$stmt = $pdo->prepare('SELECT * from movies WHERE id = :id');
 	$stmt->execute([':id' => $_GET['id']]);
@@ -31,9 +33,9 @@ $stmt->execute([
 	]);
 	
 
-	
-} else { //editar
 
 }
+
+header('location: ../../movies');
 
 //crear y editar

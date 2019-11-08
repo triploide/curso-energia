@@ -65,6 +65,8 @@ function getValue($value) {
 						<div class="invalid-feedback">Tenés que seleccionar un género</div>
 					</div>
 
+					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
+
 					<div class="form-group d-flex mt-5 justify-content-end">
 						<button type="submit" class="btn btn-primary">Enviar</button>
 					</div>
