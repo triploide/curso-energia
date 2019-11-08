@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Formulario</title>
+	<title>Formulario - Lucho</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
 
 	<script src="../js/movies.js"></script>
