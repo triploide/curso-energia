@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-$carbon = Carbon\Carbon::now()->locale('es_ES')->format('jS F y');
+$carbon = Carbon::now()->locale('es_ES')->format('jS F y');
 var_dump($carbon); exit;
 
 $carbon->addDays(10)->format('Y-m-d h:i:s');
