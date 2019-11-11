@@ -1,5 +1,9 @@
 <?php
 
+use Age\Aldeano;
+use Energia\Personaje;
+
+require 'Energia/Personaje.php';
 require 'Personaje.php';
 require 'Aldeano.php';
 
@@ -15,3 +19,10 @@ var_dump($aldeano1);
 
 echo '<pre>';
 var_dump($aldeano2);
+
+//--------------------
+
+$otroPersonaje = new Personaje('Alf', 254);
+
+echo '<pre>';
+var_dump($otroPersonaje);

@@ -1,5 +1,7 @@
 <?php
 
+namespace Energia;
+
 class Personaje
 {
 	private $nombre;

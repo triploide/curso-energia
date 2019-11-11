@@ -1,5 +1,7 @@
 <?php
 
+namespace Age;
+
 class Personaje
 {
 	private $x;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Age;
+
 class Aldeano extends Personaje
 {
 	private $vida;
@@ -16,4 +18,24 @@ class Aldeano extends Personaje
 	{
 		return $this->vida;
 	}
+
+	public function hacerDanio($aldeano)
+	{
+		if ($this->vida > 0) {
+			$ataque = $this->ataque;
+			$critico = rand(1,3);
+
+			if ($critico == 3) {
+				$ataque += 2;
+			}
+
+			$aldeano->restarVida($ataque);
+		}
+	}
+
+	public function restarVida($vida)
+	{
+		$this->vida -= $vida;
+	}
+
 }
