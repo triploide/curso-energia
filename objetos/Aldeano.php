@@ -6,12 +6,14 @@ class Aldeano extends Personaje
 {
 	private $vida;
 	private $ataque;
+	private $materiales;
 	
 	function __construct()
 	{
 		parent::__construct();
 		$this->vida = 10;
 		$this->ataque = 1;
+		$this->materiales = 0;
 	}
 
 	public function getVida()
@@ -38,4 +40,9 @@ class Aldeano extends Personaje
 		$this->vida -= $vida;
 	}
 
+	public function recolectar($arbol)
+	{
+		$madera = $arbol->talar();
+		$this->materiales += $madera;
+	}
 }
