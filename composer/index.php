@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 require 'vendor/autoload.php';
 
 $carbon = Carbon::now()->locale('es_ES')->format('jS F y');
@@ -10,7 +12,7 @@ $carbon->addDays(10)->format('Y-m-d h:i:s');
 // $carbon->addDays(10);
 // $carbon->format('Y-m-d h:i:s');
 
-$hoy = Carbon\Carbon::createFromFormat('d-m-Y', '08-11-2019');
+$hoy = Carbon::createFromFormat('d-m-Y', '08-11-2019');
 
 var_dump($hoy->format('Y-m-d h:i:s'));
 
