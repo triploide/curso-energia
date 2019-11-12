@@ -13,12 +13,26 @@ class Aldeano extends Personaje
 		parent::__construct();
 		$this->vida = 10;
 		$this->ataque = 1;
-		$this->materiales = 0;
+		$this->materiales = array(
+			'madera'=>0,
+			'oro'=>0,
+			'piedra'=>0,
+			'comida'=>0
+		);
 	}
 
 	public function getVida()
 	{
 		return $this->vida;
+	}
+
+	public function getMateriales()
+	{
+		return $this->materiales;
+	}
+
+	public function setMateriales($mat){
+		$this->materiales=$mat;
 	}
 
 	public function hacerDanio($aldeano)
@@ -40,9 +54,4 @@ class Aldeano extends Personaje
 		$this->vida -= $vida;
 	}
 
-	public function recolectar($arbol)
-	{
-		$madera = $arbol->talar();
-		$this->materiales += $madera;
-	}
 }
