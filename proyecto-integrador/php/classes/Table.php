@@ -2,12 +2,22 @@
 
 namespace Base;
 
+require_once __DIR__ . '/../config.php';
+
 class Table
 {
 	protected $nombre;
 	protected $columnas;
 	protected $valores = [];
 	protected $id;
+	protected $base;
+
+	public function __construct()
+	{
+		global $CONFIG;
+		extract($CONFIG['database']);
+		$this->base = new MySQLDB($host, $name, $user, $password);
+	}
 
 	public function getNombre()
 	{
@@ -39,5 +49,10 @@ class Table
 		if (in_array($columna, $this->columnas)) {
 			$this->valores[$columna] = $valor;
 		}
+	}
+
+	public function save()
+	{
+		$this->base->save($this);
 	}
 }

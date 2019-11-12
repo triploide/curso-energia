@@ -7,18 +7,13 @@ require 'php/classes/Table.php';
 require 'php/classes/Movie.php';
 require 'php/classes/MySQLDB.php';
 
-$base = new MySQLDB('localhost', 'movies', 'root', '');
 $movie = new Movie;
-
 $movie->setId(1);
-$movie->setColumna('title', 'Avatar 3');
-$movie->setColumna('rating', '7');
-$movie->setColumna('length', '180');
+$movie->setColumna('title', 'Avatar 10');
+$movie->setColumna('rating', '10');
+$movie->setColumna('length', '100');
 $movie->setColumna('release_date', '2020-10-10');
-
-//$movie->save();
-
-$base->save($movie);
+$movie->save();
 
 //echo '<pre>';
 //var_dump($movie);
