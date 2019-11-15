@@ -43,7 +43,7 @@
 				<form>
 					<div class="form-group">
 						<label>Fecha</label>
-						<input class="form-control" type="text" name="fecha" id="fecha">
+						<input class="form-control" type="text" name="fecha" id="fecha" readonly>
 					</div>
 					<div class="form-group">
 						<label>Hora</label>
