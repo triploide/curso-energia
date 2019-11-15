@@ -21,9 +21,12 @@ class MySQLDB
 		# code...
 	}
 
-	public function find($id)
+	public function find($id, $registro)
 	{
-		# code...
+		$sql = 'SELECT * FROM ' . $registro->getNombre() . " WHERE id = $id LIMIT 1";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
 	}
 
 	public function save($registro)
@@ -35,7 +38,38 @@ class MySQLDB
 		}
 	}
 
-	public function update($registro)
+	private function insert($registro)
+	{
+		$columnas = $registro->getColumnas();
+
+		$sql = 'INSERT INTO '. $registro->getNombre();
+
+		$sql .= "(";
+		foreach ($columnas as $columna) {
+			$sql .= "$columna, ";
+		}
+
+		$sql = trim($sql, ', ');
+		$sql .= ") values ";
+
+		$sql .= "(";
+		foreach ($columnas as $columna) {
+			$sql .= ":$columna, ";
+		}
+
+		$sql = trim($sql, ', ');
+		$sql .= ") ";
+		$stmt = $this->conn->prepare($sql);
+
+		$valores = [];
+		foreach ($columnas as $columna) {
+			$valores[":$columna"] = $registro->getColumna($columna);
+		}
+
+		$stmt->execute($valores);
+	}
+
+	private function update($registro)
 	{
 		$columnas = $registro->getColumnas();
 
@@ -53,9 +87,6 @@ class MySQLDB
 		foreach ($columnas as $columna) {
 			$valores[":$columna"] = $registro->getColumna($columna);
 		}
-
-		echo '<pre>';
-		var_dump($sql, $valores);
 
 		$stmt->execute($valores);
 	}

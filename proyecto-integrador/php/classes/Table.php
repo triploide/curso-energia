@@ -51,8 +51,24 @@ class Table
 		}
 	}
 
+	public function hydrate($data)
+	{
+		foreach ($this->columnas as $columna) {
+			if (isset($data[$columna])) {
+				$this->setColumna($columna, $data[$columna]);
+			}
+		}
+	}
+
 	public function save()
 	{
 		$this->base->save($this);
+	}
+
+	public function find($id)
+	{
+		$data = $this->base->find($id, $this);
+		$this->hydrate($data);
+		$this->id = $id;
 	}
 }
