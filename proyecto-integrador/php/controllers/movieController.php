@@ -4,6 +4,11 @@ require_once __DIR__ . '/../conn.php';
 
 //editar fecha (Datepicker - Carbon - composer)
 
+//var_dump(); con la fecha como viene del form
+//var_dump(); con la fecha lista para mysql
+
+exit;
+
 $sql = '
 	UPDATE movies
 	SET
