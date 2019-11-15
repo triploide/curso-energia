@@ -8,6 +8,10 @@ require 'php/classes/Movie.php';
 require 'php/classes/MySQLDB.php';
 
 $movie = new Movie;
+$movie->find(1);
+var_dump($movie->getColumna('title'));
+exit;
+
 $movie->setId(1);
 $movie->setColumna('title', 'Avatar 10');
 $movie->setColumna('rating', '10');

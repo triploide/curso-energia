@@ -1,37 +1,40 @@
 <?php
 
+use Base\Movie;
+use Carbon\Carbon;
+
 require_once __DIR__ . '/../conn.php';
+require_once '../classes/Table.php';
+require_once '../classes/Movie.php';
+require_once '../classes/MySQLDB.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-//editar fecha (Datepicker - Carbon - composer)
 
-//var_dump(); con la fecha como viene del form
-//var_dump(); con la fecha lista para mysql
+/*
 
-exit;
+var_dump();
+*/
 
-$sql = '
-	UPDATE movies
-	SET
-		title = :title,
-		length = :length,
-		rating = :rating,
-		release_date = :release_date
-	WHERE id = :id
-';
-
-if ($_POST['id']) { //editar
-	$stmt = $pdo->prepare($sql);
-	$stmt->execute([
-		':title' => $_POST['title'],
-		':length' => $_POST['length'],
-		':rating' => $_POST['rating'],
-		':release_date' => $_POST['release_date'],
-		':id' => $_POST['id'],
-	]);
-} else { //crear
-
+if ($_POST['id']) {
+	$movie = new Movie;
+	$movie->find($_POST['id']);
+} else {
+	$movie = new Movie;
 }
 
-header('location: ../../movies');
+echo '<pre>';
+var_dump($movie);
+
+$fecha = Carbon::createFromFormat('d/m/Y', $_POST['release_date']);
+$movie->setColumna('title', $_POST['title']);
+$movie->setColumna('rating', $_POST['rating']);
+$movie->setColumna('length', $_POST['length']);
+$movie->setColumna('release_date', $fecha->format('Y-m-d'));
+$movie->save();
+
+echo '<pre>';
+var_dump($movie);
+
+//header('location: ../../movies');
 
 //crear y editar
