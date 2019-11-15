@@ -15,6 +15,8 @@ function getValue($value) {
 	}
 	return $response;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +25,7 @@ function getValue($value) {
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
+	<script src="/js/movie.js"></script>
 </head>
 <body>
 	<div class="container">
