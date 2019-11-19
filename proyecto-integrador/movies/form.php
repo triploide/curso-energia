@@ -34,7 +34,7 @@ function getValue($value) {
 				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
-				<form action="../php/controllers/movieController.php" method="POST">
+				<form action="../php/controllers/movieController.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="title">Título</label>
 						<input class="form-control" type="text" name="title" id="title" value="<?php echo getValue('title') ?>">
@@ -56,6 +56,11 @@ function getValue($value) {
 					<div class="form-group">
 						<label for="release_date">Fecha de estreno</label>
 						<input class="form-control" type="text" name="release_date" id="release_date" value="<?php echo getValue('release_date') ?>">
+					</div>
+
+					<div class="form-group">
+						<label for="banner">Banner</label>
+						<input class="form-control" type="file" name="banner" id="banner" value="">
 					</div>
 
 					<div class="form-group">
