@@ -38,6 +38,14 @@
 		<?php include __DIR__ . '/../tpl/nav.php' ?>
 
 		<div class="row">
+			<div class="col-md-12 text-right">
+				<a href="/movies/form.php" class="btn btn-primary">
+					Crear <span class="fa fa-plus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-3">
 				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>

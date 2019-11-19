@@ -1,8 +1,20 @@
 <?php
 
 require_once __DIR__ . '/../conn.php';
+require '../../../composer/vendor/autoload.php';
 
 //editar fecha (Datepicker - Carbon - composer)
+
+//var_dump(); con la fecha como viene del form
+//var_dump(); con la fecha lista para mysql
+$fecha = $_POST['release_date'];
+var_dump($fecha);	
+
+
+$fechaMaquina = Carbon\Carbon::createFromFormat('d/m/Y', $fecha);
+var_dump($fechaMaquina->toDateString());
+
+exit;
 
 $sql = '
 	UPDATE movies
