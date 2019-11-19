@@ -1,4 +1,5 @@
 <?php
+phpinfo();
 require_once __DIR__ . '/../php/conn.php';
 $movie = false;
 if (isset($_GET['id'])) {
