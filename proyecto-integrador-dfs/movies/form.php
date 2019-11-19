@@ -73,6 +73,12 @@ function getValue($value) {
 						<div class="invalid-feedback">Tenés que seleccionar un género</div>
 					</div>
 
+
+					<div class="form-group">
+						<label for="banner">Banner</label>
+						<input type="file" name="banner" value="banner" id="banner">
+					</div>
+
 					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
 
 					<div class="form-group d-flex mt-5 justify-content-end">
