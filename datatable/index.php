@@ -43,12 +43,14 @@
 			</div>
 		</div>
 
+
 		<table id="tabla-peliculas" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th>Título</th>
-					<th>Rating</th>
-					<th>Género</th>
+					<th>Genero</th>
+					<th>Ranking</th>
+					<th>Genero</th>
+					
 				</tr>
 			</thead>
 			<tbody>

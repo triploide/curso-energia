@@ -2,49 +2,43 @@
 
 require "conn.php";
 
-$columns = ['name', 'ranking'];
+$columns = ['title', 'rating', 'genre'];
 $order = $columns[$_GET['order'][0]['column']];
 $dir = $_GET['order'][0]['dir'];
 
 //data
 $stmtData = $pdo->prepare('
-
 	SELECT title, rating, genres.name as genre
 	FROM movies
 	INNER JOIN genres on genres.id = movies.genre_id
-	WHERE title like :search and genre_id = :genre_id
-	ORDER BY ' . $order . ' ' . $dir . '
-	LIMIT :length
-	OFFSET :start
+	WHERE title like :search
+	ORDER BY '. $order .' ' . $dir . '
+	LIMIT '. $_GET['length'] .'
+	OFFSET '. $_GET['start'] .'
 ');
-$stmtData->bindValue(':length', $_GET['length'], PDO::PARAM_INT);
-$stmtData->bindValue(':start', $_GET['start'], PDO::PARAM_INT);
-$stmtData->bindValue(':genre_id', $_GET['genre_id'], PDO::PARAM_INT);
-$stmtData->bindValue(':search', $_GET['search']['value'] . "%", PDO::PARAM_STR);
-
-$stmtData->execute();
+$stmtData->execute([
+	':search' => $_GET['search']['value'] . "%",
+]);
 $resultados = $stmtData->fetchAll(PDO::FETCH_ASSOC);
 
 //total
 $stmtTotal = $pdo->prepare('
-	SELECT COUNT(genres.id) as total
-	FROM genres
-	
+	SELECT COUNT(movies.id) as total
+	FROM movies
+	INNER JOIN genres on genres.id = movies.genre_id
 ');
 $stmtTotal->execute();
 $total = $stmtTotal->fetchColumn();
 
 //total
 $stmtFiltered = $pdo->prepare('
-
 	SELECT COUNT(movies.id) as total
 	FROM movies
 	INNER JOIN genres on genres.id = movies.genre_id
-	WHERE title like :search and genre_id = :genre_id
+	WHERE title like :search
 ');
 $stmtFiltered->execute([
-	':search' => $_GET['search']['value'] . "%",
-	':genre_id' => $_GET['genre_id'],
+	':search' => $_GET['search']['value'] . "%"
 ]);
 $filtered = $stmtFiltered->fetchColumn();
 

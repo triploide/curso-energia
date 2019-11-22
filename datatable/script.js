@@ -1,5 +1,7 @@
 $(document).ready(function () {
+
 	var datatable = $('#tabla-peliculas').DataTable({
+
 		serverSide: true,
 		ajax: {
 			url: 'datatableController.php',
