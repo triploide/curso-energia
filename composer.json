@@ -1,8 +1,14 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "require": {
         "nesbot/carbon": "^1.39"
     }
 =======
 >>>>>>> d3b9b69e32dbf61ab4406a8ecb4064dffbf78d3b
+=======
+    "require": {
+        "intervention/image": "^2.5"
+    }
+>>>>>>> 1d8486a0a2588005e96979c30d0d0b0fa8cec21d
 }

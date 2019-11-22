@@ -1,6 +1,5 @@
 <?php
-phpinfo();
-require_once __DIR__ . '/../php/conn.php';
+//require_once __DIR__ . '/../php/conn.php';
 $movie = false;
 if (isset($_GET['id'])) {
 	$stmt = $pdo->prepare('SELECT * from movies WHERE id = :id');
@@ -75,10 +74,7 @@ function getValue($value) {
 					</div>
 
 
-					<div class="form-group">
-						<label for="banner">Banner</label>
-						<input type="file" name="banner" value="banner" id="banner">
-					</div>
+					
 
 					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
 

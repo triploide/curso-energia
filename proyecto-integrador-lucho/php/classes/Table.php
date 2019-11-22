@@ -2,6 +2,8 @@
 
 namespace Base;
 
+require_once __DIR__ . '/../config.php';
+
 class Table
 {
 	protected $nombre;
@@ -9,10 +11,12 @@ class Table
 	protected $valores = [];
 	protected $id;
 	protected $base;
-	protected $db
 
-	function __construct($base){
-		$this->base = $base;
+	public function __construct()
+	{
+		global $CONFIG;
+		extract($CONFIG['database']);
+		$this->base = new MySQLDB($host, $name, $user, $password);
 	}
 
 	public function getNombre()
@@ -47,11 +51,32 @@ class Table
 		}
 	}
 
-	public function save (){
-		$this->base->save($this);
-
-
-		//fufndsaion
+	public function hydrate($data)
+	{
+		foreach ($this->columnas as $columna) {
+			if (isset($data[$columna])) {
+				$this->setColumna($columna, $data[$columna]);
+			}
+		}
 	}
 
+	public function save()
+	{
+		$this->base->save($this);
+	}
+
+	public function addImage($inputName, $dir, $width, $height)
+	{
+		$this->base->addImage($inputName, $dir, $width, $height);
+		global $nombreImagen;
+		$this->setColumna($inputName, $nombreImagen);
+
+	}
+
+	public function find($id)
+	{
+		$data = $this->base->find($id, $this);
+		$this->hydrate($data);
+		$this->id = $id;
+	}
 }

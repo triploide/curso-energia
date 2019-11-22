@@ -1,8 +1,6 @@
 <?php
-
-
-
-
+print_r($_FILES);
+die();
 use Base\Movie;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -17,9 +15,9 @@ require_once '../classes/Table.php';
 require_once '../classes/Movie.php';
 require_once '../classes/MySQLDB.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
-print_r($_FILES);
 
-$image = Image::configure(array('driver'=>'gd'));
+
+//s$image = Image::configure(array('driver'=>'gd'));
 $image = Image::make($_FILES['banner']['tmp_name']);
 /*
 $image->resize(null, 100, function ($constraint) {
