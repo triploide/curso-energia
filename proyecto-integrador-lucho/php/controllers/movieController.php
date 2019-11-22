@@ -1,44 +1,57 @@
 <?php
 
+use Base\Movie;
+use Carbon\Carbon;
+
+require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../conn.php';
-require '../../../composer/vendor/autoload.php';
+require_once '../classes/Table.php';
+require_once '../classes/Movie.php';
+require_once '../classes/MySQLDB.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-//editar fecha (Datepicker - Carbon - composer)
+/*
+$image->resize(null, 100, function ($constraint) {
+	$constraint->aspectRatio();
+});*/
+/*
 
-//var_dump(); con la fecha como viene del form
-//var_dump(); con la fecha lista para mysql
-$fecha = $_POST['release_date'];
-var_dump($fecha);	
+$image = Image::make($_FILES['banner']['tmp_name']);
+
+$image->fit(900, 600);
+$image->insert($CONFIG['filesystem']['images'] . 'watermark.png', 'center');
+$nombre = uniqid() . '.jpg';
+$image->save($CONFIG['filesystem']['path'] . 'movies/' . $nombre);
+
+*/
+//$image->crop(100, 200);
+//$image->with(); // getter
+//$image->height(); // getter
+//$image->blur();
+//$image->insert('path/a/otra/image.jpg');
 
 
-$fechaMaquina = Carbon\Carbon::createFromFormat('d/m/Y', $fecha);
-var_dump($fechaMaquina->toDateString());
+//Agregar la columna banner en la table movies
+//Persistir el nombre de imagen en la base
 
-exit;
 
-$sql = '
-	UPDATE movies
-	SET
-		title = :title,
-		length = :length,
-		rating = :rating,
-		release_date = :release_date
-	WHERE id = :id
-';
 
-if ($_POST['id']) { //editar
-	$stmt = $pdo->prepare($sql);
-	$stmt->execute([
-		':title' => $_POST['title'],
-		':length' => $_POST['length'],
-		':rating' => $_POST['rating'],
-		':release_date' => $_POST['release_date'],
-		':id' => $_POST['id'],
-	]);
-} else { //crear
-
+if ($_POST['id']) {
+	$movie = new Movie;
+	$movie->find($_POST['id']);
+} else {
+	$movie = new Movie;
 }
 
-header('location: ../../movies');
+$movie->addImage($movie->getFilesInputName(), $movie->getFilesDir(), $movie->getFileswidth(), $movie->getFilesheight());
 
-//crear y editar
+$fecha = Carbon::createFromFormat('d/m/Y', $_POST['release_date']);
+$movie->setColumna('title', $_POST['title']);
+$movie->setColumna('rating', $_POST['rating']);
+$movie->setColumna('length', $_POST['length']);
+$movie->setColumna('release_date', $fecha->format('Y-m-d'));
+$movie->save();
+
+
+
+//header('location: ../../movies');
