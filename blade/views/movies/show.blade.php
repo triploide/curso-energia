@@ -1,22 +1,15 @@
 @extends('movies/app')
 
-@section('name')
-	{{-- expr --}}
+@section('title')
+	{{ $movie->getColumna('title') }} - Nombre del sitio
 @endsection
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>{{ $movie->getColumna('title') }}</title>
-	@include('partials/head')
-</head>
-<body>
+@section('h1')
+	{{ $movie->getColumna('title') }}
+@endsection
 
-	<h1>{{ $movie->getColumna('title') }}</h1>
-	
+@section('content')
 	<p><strong>Duración: </strong>{{ $movie->getColumna('length') }}</p>
 
 	<p><strong>Estreno: </strong>{{ $movie->getColumna('release_date') }}</p>
-</body>
-</html>
+@endsection
