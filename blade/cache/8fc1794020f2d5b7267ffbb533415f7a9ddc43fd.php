@@ -9,5 +9,7 @@
 	<h1><?php echo e($movie->getColumna('title')); ?></h1>
 	
 	<p><strong>Duración: </strong><?php echo e($movie->getColumna('length')); ?></p>
+
+	<p><strong>Estreno: </strong><?php echo e($movie->getColumna('release_date')); ?></p>
 </body>
 </html><?php /**PATH C:\xampp\htdocs\curso-energia\blade\views/movies/show.blade.php ENDPATH**/ ?>
