@@ -17,5 +17,3 @@
 <!-- clockpicker js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.js"></script>
 <script src="script.js"></script>
-
-<!-- {{ $tit }} -->

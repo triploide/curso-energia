@@ -16,6 +16,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 <!-- clockpicker js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.js"></script>
-<script src="script.js"></script>
-
-<!-- <?php echo e($tit); ?> --><?php /**PATH C:\xampp\htdocs\curso-energia\blade\views/partials/head.blade.php ENDPATH**/ ?>
+<script src="script.js"></script><?php /**PATH C:\xampp\htdocs\curso-energia\blade\views/partials/head.blade.php ENDPATH**/ ?>

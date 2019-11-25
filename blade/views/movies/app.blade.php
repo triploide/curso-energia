@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>@yield('title')</title>
-</head>
-<body>
-	<h1>@yield('h1')</h1>
-	
-	@yield('content')
-</body>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		@yield('head')
+		<title>@yield('title')</title>
+	</head>
+	<body>
+		@yield('body')
+	</body>
 </html>
