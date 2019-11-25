@@ -2,22 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{{ $titulo }}</title>
+	<title>{{ $movie->getColumna('title') }}</title>
 	@include('partials/head')
 </head>
 <body>
-	@if ($mostrarTitulo)
-		<h1>{{ $titulo }}</h1>
-	@else
-		<h1>Sin título</h1>
-	@endif
+	<h1>{{ $movie->getColumna('title') }}</h1>
 	
-	<p>{{ $contenido }}</p>
+	<p><strong>Duración: </strong>{{ $movie->getColumna('length') }}</p>
 
-	<ul>
-		@foreach ($tags as $tag)
-			<li>{{ $tag }}</li>
-		@endforeach
-	</ul>
+	<p><strong>Estreno: </strong>{{ $movie->getColumna('release_date') }}</p>
 </body>
 </html>
