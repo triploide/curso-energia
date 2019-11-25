@@ -1,1 +1,18 @@
-@yield('name', 'default')
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+	@yield('head')
+<title>
+	@yield('title')
+</title>
+</head>
+
+<body>
+@yield('body')
+</body>
+
+</html>
