@@ -1,3 +1,9 @@
+@extends('movies/app')
+
+@section('name')
+	{{-- expr --}}
+@endsection
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +12,7 @@
 	@include('partials/head')
 </head>
 <body>
+
 	<h1>{{ $movie->getColumna('title') }}</h1>
 	
 	<p><strong>Duración: </strong>{{ $movie->getColumna('length') }}</p>

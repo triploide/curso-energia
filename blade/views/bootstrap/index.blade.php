@@ -1,4 +1,4 @@
-@extends('app')
+@extends('bootstrap/app')
 
 @section('title')
 	Nuevo title

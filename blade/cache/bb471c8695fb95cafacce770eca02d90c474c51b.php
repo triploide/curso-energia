@@ -45,4 +45,4 @@
 <?php $__env->startSection('footer'); ?>
 	Ministerio de Energía
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\curso-energia\blade\views/bootstrap/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('bootstrap/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\curso-energia\blade\views/bootstrap/index.blade.php ENDPATH**/ ?>
