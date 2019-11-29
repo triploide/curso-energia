@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	//datepicker
 	$('input[name="release_date"]').datepicker({
 		autoclose: true,
 		language: 'es',
@@ -10,5 +11,12 @@ $(document).ready(function () {
 			month: 0,
 			day: 1
 		}
+	});
+
+	//filer
+	$('#banner').filer({
+		showThumbs: true,
+		addMore: true,
+		allowDuplicates: false
 	});
 });
