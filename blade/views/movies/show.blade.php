@@ -24,7 +24,5 @@
 
 	<p><strong>Estreno: </strong>{{ $movie->getColumna('release_date') }}</p>
 
-	<p><strong>Genero: </strong>{{ $movie->getColumna('rating') }}</p>
-
-</html>
+	<p><strong>Genero: </strong>{{ $movie->getColumna('rating
 @endsection
