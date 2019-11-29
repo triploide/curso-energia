@@ -58,6 +58,7 @@ class Table
 				$this->setColumna($columna, $data[$columna]);
 			}
 		}
+		$this->id = $data['id'];
 	}
 
 	public function save()
