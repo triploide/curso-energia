@@ -1,21 +1,19 @@
 <?php
-phpinfo();
-require_once __DIR__ . '/../php/conn.php';
-$movie = false;
-if (isset($_GET['id'])) {
-	$stmt = $pdo->prepare('SELECT * from movies WHERE id = :id');
-	$stmt->execute([':id' => $_GET['id']]);
-	$movie = $stmt->fetch(PDO::FETCH_ASSOC);
-}
 
-function getValue($value) {
-	global $movie;
-	$response = '';
-	if ($movie && isset($movie[$value])) {
-		$response = $movie[$value];
-	}
-	return $response;
-}
+use Base\Movie;
+
+require_once __DIR__ . '/../php/config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../php/classes/Table.php';
+require_once __DIR__ . '/../php/classes/Movie.php';
+require_once __DIR__ . '/../php/classes/MySQLDB.php';
+
+/*
+$movie = new Movie;
+$movie->title = 'nuevo'; exit;
+*/
+
+$movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
 ?>
 
 <!DOCTYPE html>
@@ -38,25 +36,25 @@ function getValue($value) {
 				<form action="../php/controllers/movieController.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="title">Título</label>
-						<input class="form-control" type="text" name="title" id="title" value="<?php echo getValue('title') ?>">
+						<input class="form-control" type="text" name="title" id="title" value="<?php echo $movie->title ?>">
 						<div class="invalid-feedback">La película ya existe</div>
 					</div>
 
 					<div class="form-group">
 						<label for="length">Duración</label>
-						<input class="form-control" type="text" name="length" id="length" value="<?php echo getValue('length') ?>">
+						<input class="form-control" type="text" name="length" id="length" value="<?php echo $movie->length ?>">
 						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
 					</div>
 
 					<div class="form-group">
 						<label for="rating">Rating</label>
-						<input class="form-control" type="text" name="rating" id="rating" value="<?php echo getValue('rating') ?>">
+						<input class="form-control" type="text" name="rating" id="rating" value="<?php echo $movie->rating ?>">
 						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
 					</div>
 
 					<div class="form-group">
 						<label for="release_date">Fecha de estreno</label>
-						<input class="form-control" type="text" name="release_date" id="release_date" value="<?php echo getValue('release_date') ?>">
+						<input class="form-control" type="text" name="release_date" id="release_date" value="<?php echo $movie->release_date ?>">
 					</div>
 
 					<div class="form-group">
@@ -72,7 +70,7 @@ function getValue($value) {
 						<div class="invalid-feedback">Tenés que seleccionar un género</div>
 					</div>
 
-					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
+					<input type="hidden" name="id" value="<?php echo $movie->id ?>">
 
 					<div class="form-group d-flex mt-5 justify-content-end">
 						<button type="submit" class="btn btn-primary">Enviar</button>

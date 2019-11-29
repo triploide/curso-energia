@@ -1,9 +1,6 @@
 <?php
 
 namespace Base;
-use Intervention\Image\ImageManagerStatic as Image;
-require_once __DIR__ . '/../config.php';
-
 
 class MySQLDB
 {
@@ -92,23 +89,6 @@ class MySQLDB
 		}
 
 		$stmt->execute($valores);
-	}
-
-	public function addImage($inputName, $dir, $width, $height)
-	{
-		global $CONFIG;
-		global $nombreImagen;
-		
-		$image = Image::make($_FILES[$inputName]['tmp_name']);
-		/*
-		$image->resize(null, 100, function ($constraint) {
-			$constraint->aspectRatio();
-		});*/
-
-		$image->fit($width, $height);
-		$image->insert($CONFIG['filesystem']['images'] . 'watermark.png', 'bottom-right');
-		$nombreImagen = uniqid() . '.jpg';
-		$image->save($CONFIG['filesystem']['path'] . $dir.'/' . $nombreImagen);
 	}
 
 	public function delete($registro)
