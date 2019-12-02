@@ -79,7 +79,7 @@ class Table
 	{
 		$valor = $this->getColumna($atributo);
 
-		if (in_array($atributo, $this->dates)) {
+		if (in_array($atributo, $this->dates) && $valor) {
 			$valor = \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $valor);
 			$valor = $valor->format('d-m-Y');
 		}
