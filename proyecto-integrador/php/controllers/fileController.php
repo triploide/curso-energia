@@ -11,6 +11,6 @@ require_once '../classes/File.php';
 require_once '../classes/MySQLDB.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$file = File::find($_POST['id'], File::class);
+$file = File::find($_POST['id']);
 $file->delete();
 

@@ -61,7 +61,6 @@ foreach ($movie->files() as $file) {
 	<script src="/js/jquery.filer.min.js" type="text/javascript"></script>
 	<script>
 		var files = <?php echo json_encode($files); ?>;
-		console.log(files);
 	</script>
 	<script src="/js/movie.js"></script>
 </head>
