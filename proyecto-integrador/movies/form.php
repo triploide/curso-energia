@@ -14,6 +14,19 @@ $movie->title = 'nuevo'; exit;
 */
 
 $movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
+
+$files = [];
+
+foreach ($movie->files() as $file) {
+	$files[] = [
+		'id' => $file['id'],
+		'name' => $file['old_name'],
+		'size' => $file['size'],
+		'type' => $file['type']
+	];
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +59,10 @@ $movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
 
 	<!-- Jvascript -->
 	<script src="/js/jquery.filer.min.js" type="text/javascript"></script>
+	<script>
+		var files = <?php echo json_encode($files); ?>;
+		console.log(files);
+	</script>
 	<script src="/js/movie.js"></script>
 </head>
 <body>

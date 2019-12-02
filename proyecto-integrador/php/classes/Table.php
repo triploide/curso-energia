@@ -66,9 +66,17 @@ class Table
 		$this->base->save($this);
 	}
 
-	public static function find($id)
+	public function delete()
 	{
-		$movie = new Movie;
+		$this->base->delete($this);
+	}
+
+	public static function find($id, $class=null)
+	{
+		if ($class == null) {
+			$class = Movie::class;
+		}
+		$movie = new $class;
 		$data = $movie->base->find($id, $movie);
 		$movie->hydrate($data);
 		$movie->id = $id;
