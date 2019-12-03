@@ -7,7 +7,7 @@ class Tamagochi
 
 	function __construct()
 	{
-		$this->estado = new Triste;
+		$this->estado = new Contento;
 		$this->vida = true;
 	}
 

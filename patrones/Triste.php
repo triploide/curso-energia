@@ -16,6 +16,8 @@ class Triste
 
 	public function ignorar($tamagochi)
 	{
-		echo '¡Estoy triste!<br>';
+		$hambre = new Hambre;
+		$tamagochi->setEstado($hambre);
+		echo '¡Ahora estoy con  hambre!<br>';
 	}
 }

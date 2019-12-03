@@ -15,6 +15,9 @@ class Contento
 
 	public function ignorar($tamagochi)
 	{
-		echo '...<br>';
+		
+		$triste = new Triste;
+		$tamagochi->setEstado($triste);
+		echo '¡Ahora estoy triste!<br>';
 	}
 }
