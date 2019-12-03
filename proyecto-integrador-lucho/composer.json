@@ -1,7 +1,6 @@
 {
     "require": {
         "nesbot/carbon": "^2.26",
-        "intervention/image": "^2.5",
-        "jenssegers/blade": "^1.2"
+        "intervention/image": "^2.5"
     }
 }

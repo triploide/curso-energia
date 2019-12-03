@@ -9,7 +9,7 @@ class Table
 	protected $nombre;
 	protected $columnas;
 	protected $valores = [];
-	protected $id;
+	public $id;
 	protected $base;
 
 	public function __construct()
@@ -58,6 +58,7 @@ class Table
 				$this->setColumna($columna, $data[$columna]);
 			}
 		}
+		$this->id = $data['id'];
 	}
 
 	public function save()
@@ -65,9 +66,15 @@ class Table
 		$this->base->save($this);
 	}
 
+	public function delete()
+	{
+		$this->base->delete($this);
+	}
+
 	public static function find($id)
 	{
-		$movie = new Movie;
+		$class = get_called_class();
+		$movie = new $class;
 		$data = $movie->base->find($id, $movie);
 		$movie->hydrate($data);
 		$movie->id = $id;
@@ -78,7 +85,7 @@ class Table
 	{
 		$valor = $this->getColumna($atributo);
 
-		if (in_array($atributo, $this->dates)) {
+		if (in_array($atributo, $this->dates) && $valor) {
 			$valor = \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $valor);
 			$valor = $valor->format('d-m-Y');
 		}

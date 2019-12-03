@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$('#banner').filer({
+	$('#filer_input').filer({
 		showThumbs: true,
 		addMore: true,
 		allowDuplicates: false

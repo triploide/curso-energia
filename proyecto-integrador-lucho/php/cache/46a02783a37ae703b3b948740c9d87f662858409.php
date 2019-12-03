@@ -42,7 +42,7 @@
 
 		<div class="form-group">
 			<label for="banner">Banner</label>
-		    <input type="file" name="files[]" id="banner" multiple>
+		    <input type="file" name="files[]" id="banner[]" multiple>
 		</div>
 
 		<div class="form-group">
