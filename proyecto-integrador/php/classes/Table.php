@@ -9,7 +9,7 @@ class Table
 	protected $nombre;
 	protected $columnas;
 	protected $valores = [];
-	protected $id;
+	public $id;
 	protected $base;
 
 	public function __construct()
@@ -71,11 +71,9 @@ class Table
 		$this->base->delete($this);
 	}
 
-	public static function find($id, $class=null)
+	public static function find($id)
 	{
-		if ($class == null) {
-			$class = Movie::class;
-		}
+		$class = get_called_class();
 		$movie = new $class;
 		$data = $movie->base->find($id, $movie);
 		$movie->hydrate($data);

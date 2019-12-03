@@ -10,7 +10,8 @@ $(document).ready(function () {
 			year: 1990,
 			month: 0,
 			day: 1
-		}
+		},
+		format: 'dd-mm-yyyy',
 	});
 
 	//filer
