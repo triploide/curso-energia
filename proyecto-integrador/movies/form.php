@@ -8,6 +8,9 @@ require_once __DIR__ . '/../php/classes/Table.php';
 require_once __DIR__ . '/../php/classes/Movie.php';
 require_once __DIR__ . '/../php/classes/MySQLDB.php';
 
+echo '<pre>';
+var_dump(Movie::findAll());exit;
+
 /*
 $movie = new Movie;
 $movie->title = 'nuevo'; exit;
