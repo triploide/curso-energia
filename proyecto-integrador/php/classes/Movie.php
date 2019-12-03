@@ -10,9 +10,13 @@ class Movie extends Table
 
 	public function files()
 	{
-		$sql = 'SELECT * from files where movie_id = ' . $this->id;
-		$stmt = $this->base->conn->prepare($sql);
-		$stmt->execute();
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		if ($this->id) {
+			$sql = 'SELECT * from files where movie_id = ' . $this->id;
+			$stmt = $this->base->conn->prepare($sql);
+			$stmt->execute();
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		} else {
+			return [];
+		}
 	}
 }
