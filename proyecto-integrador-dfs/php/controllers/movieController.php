@@ -1,45 +1,78 @@
 <?php
-print_r($_FILES);
-die();
+
+use Base\File;
 use Base\Movie;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 
-//editar fecha (Datepicker - Carbon - composer)
-/*$stmt = $pdo->prepare('SELECT * from movies WHERE id = :id');
-	$stmt->execute([':id' => $_GET['id']]);
-	$movie = $stmt->fetch(PDO::FETCH_ASSOC);*/
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../conn.php';
 require_once '../classes/Table.php';
 require_once '../classes/Movie.php';
+require_once '../classes/File.php';
 require_once '../classes/MySQLDB.php';
+require_once '../classes/Uploader.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-
-//s$image = Image::configure(array('driver'=>'gd'));
-$image = Image::make($_FILES['banner']['tmp_name']);
-/*
-$image->resize(null, 100, function ($constraint) {
-	$constraint->aspectRatio();
-});*/
-
-$image->fit(900, 600);
-$image->insert($CONFIG['filesystem']['images'] . 'watermark.png', 'center');
-$nombre = uniqid() . '.jpg';
-$image->save($CONFIG['filesystem']['path'] . 'movies/' . $nombre);
-
-
-exit;
-var_dump($_POST['release_date']);
-$hoy = Carbon::createFromFormat('d/m/Y', $_POST['release_date']);
-
-echo ("<br>");
-var_dump($hoy->format('Y-m-d h:i:s'));
-//var_dump(); con la fecha como viene del form
-//var_dump(); con la fecha lista para mysql
+//var_dump($_FILES['banner']); exit;
 
 
 
+if ($_POST['id']) {
+	$movie = new Movie;
+	$movie->find($_POST['id']);
+} else {
+	$movie = new Movie;
+}
 
-//crear y editar
+$fecha = Carbon::createFromFormat('d-m-Y', $_POST['release_date']);
+$movie->setColumna('title', $_POST['title']);
+$movie->setColumna('rating', $_POST['rating']);
+$movie->setColumna('length', $_POST['length']);
+$movie->setColumna('release_date', $fecha->format('Y-m-d'));
+$movie->setColumna('banner', 'cualquiercosa.jpg');
+$movie->save();
+
+
+$uploader = new Uploader();
+$data = $uploader->upload($_FILES['files'], [
+    'limit' => 10, //Maximum Limit of files. {null, Number}
+    'maxSize' => 10, //Maximum Size of files {null, Number(in MB's)}
+    'extensions' => null, //Whitelist for file extension. {null, Array(ex: array('jpg', 'png'))}
+    'required' => false, //Minimum one file is required for upload {Boolean}
+    'uploadDir' => __DIR__ . '/../../uploads/', //Upload directory {String}
+    'title' => '{{timestamp}}', //New file name {null, String, Array} *please read documentation in README.md
+    'removeFiles' => true, //Enable file exclusion {Boolean(extra for jQuery.filer), String($_POST field name containing json data with file names)}
+    'replace' => true, //Replace the file if it already exists  {Boolean}
+    'perms' => null, //Uploaded file permisions {null, Number}
+    'onCheck' => null, //A callback function name to be called by checking a file for errors (must return an array) | ($file) | Callback
+    'onError' => null, //A callback function name to be called if an error occured (must return an array) | ($errors, $file) | Callback
+    'onSuccess' => null, //A callback function name to be called if all files were successfully uploaded | ($files, $metas) | Callback
+    'onUpload' => null, //A callback function name to be called if all files were successfully uploaded (must return an array) | ($file) | Callback
+    'onComplete' => null, //A callback function name to be called when upload is complete | ($file) | Callback
+    'onRemove' => null //A callback function name to be called by removing files (must return an array) | ($removed_files) | Callback
+]);
+
+//echo '<pre>';
+//print_r($data); exit;
+
+if($data['hasErrors']){
+    $errors = $data['errors'];
+    print_r($errors);
+}
+
+if($data['isComplete']) {
+    foreach ($data['data']['metas'] as $meta) {
+        $file = new File;
+        $file->setColumna('extension', $meta['extension']);
+        $file->setColumna('name', $meta['name']);
+        $file->setColumna('old_name', $meta['old_name']);
+        $file->setColumna('size', $meta['size']);
+        $file->setColumna('human_size', $meta['size2']);
+        $file->setColumna('type', $meta['type'][0] . '/' . $meta['type'][1]);
+        $file->setColumna('movie_id', $_POST['id']);
+        $file->save();
+    }
+}
+
+//header('location: ../../movies');

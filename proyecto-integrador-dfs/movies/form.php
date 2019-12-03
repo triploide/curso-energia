@@ -1,5 +1,32 @@
 <?php
 //require_once __DIR__ . '/../php/conn.php';
+
+/******************************************************************/
+use Base\Movie;
+
+require_once __DIR__ . '/../php/config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../php/classes/Table.php';
+require_once __DIR__ . '/../php/classes/Movie.php';
+require_once __DIR__ . '/../php/classes/MySQLDB.php';
+
+$movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
+
+$files = [];
+
+foreach ($movie->files() as $file) {
+	$files[] = [
+		'id' => $file['id'],
+		'name' => $file['old_name'],
+		'size' => $file['size'],
+		'type' => $file['type']
+	];
+}
+
+/******************************************************************/
+
+
+
 $movie = false;
 if (isset($_GET['id'])) {
 	$stmt = $pdo->prepare('SELECT * from movies WHERE id = :id');
@@ -25,15 +52,16 @@ function getValue($value) {
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
-	<script src="/js/movie.js"></script>
+	<script src="../js/movie.js"></script>
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
 	<!-- Styles -->
 	<link href="../css/jquery.filer.css" rel="stylesheet">
 
-	<!-- Jvascript -->
-	<script src="http://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+	
+	
+	
 	<script src="../js/jquery.filer.min.js" type="text/javascript"></script>
 	<script src="../js/custom.js" type="text/javascript"></script>
 

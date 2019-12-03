@@ -4,7 +4,7 @@ namespace Base;
 
 class MySQLDB
 {
-	private $conn;
+	public $conn;
 
 	function __construct($host, $db, $user, $password)
 	{
