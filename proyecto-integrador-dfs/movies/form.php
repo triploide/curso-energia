@@ -26,6 +26,36 @@ function getValue($value) {
 	<title>Formulario</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
 	<script src="/js/movie.js"></script>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+	<!-- Styles -->
+	<link href="../css/jquery.filer.css" rel="stylesheet">
+
+	<!-- Jvascript -->
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+	<script src="../js/jquery.filer.min.js" type="text/javascript"></script>
+	<script src="../js/custom.js" type="text/javascript"></script>
+
+    <style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #47525d;
+            background-color: #fff;
+
+            margin: 0;
+            padding: 20px;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
 	<div class="container">
@@ -74,7 +104,15 @@ function getValue($value) {
 					</div>
 
 
-					
+					<div class="form-group">
+						<label for="foto_prota">Foto Protagonistas</label>
+						 <input type="file" name="files[]" id="foto_prota" multiple>
+		    			<input type="submit" value="Submit">
+					</div>
+
+
+
+
 
 					<input type="hidden" name="id" value="<?php echo getValue('id') ?>">
 

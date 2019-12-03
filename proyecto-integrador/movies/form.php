@@ -14,6 +14,19 @@ $movie->title = 'nuevo'; exit;
 */
 
 $movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
+
+$files = [];
+
+foreach ($movie->files() as $file) {
+	$files[] = [
+		'id' => $file['id'],
+		'name' => $file['old_name'],
+		'size' => $file['size'],
+		'type' => $file['type']
+	];
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +35,33 @@ $movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<?php include __DIR__ . '/../tpl/head.php'; ?>
+
+	<!-- css -->
+	<style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #47525d;
+            background-color: #fff;
+
+            margin: 0;
+            padding: 20px;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
+
+	<!-- Jvascript -->
+	<script src="/js/jquery.filer.min.js" type="text/javascript"></script>
+	<script>
+		var files = <?php echo json_encode($files); ?>;
+	</script>
 	<script src="/js/movie.js"></script>
 </head>
 <body>
@@ -59,7 +99,7 @@ $movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
 
 					<div class="form-group">
 						<label for="banner">Banner</label>
-						<input class="form-control" type="file" name="banner" id="banner" value="">
+						<input class="form-control" type="file" name="banner[]" id="banner" value="">
 					</div>
 
 					<div class="form-group">
