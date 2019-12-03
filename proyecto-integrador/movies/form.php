@@ -1,15 +1,25 @@
 <?php
 
+use Base\Genre;
 use Base\Movie;
 
 require_once __DIR__ . '/../php/config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../php/classes/Table.php';
 require_once __DIR__ . '/../php/classes/Movie.php';
+require_once __DIR__ . '/../php/classes/Genre.php';
 require_once __DIR__ . '/../php/classes/MySQLDB.php';
 
+$findAll = Genre::findAll();
+
+$options = [];
+foreach ($findAll as $data) {
+	$options[$data['id']] = $data['name'];
+}
+
 echo '<pre>';
-var_dump(Movie::findAll());exit;
+var_dump($options); exit;
+
 
 /*
 $movie = new Movie;
