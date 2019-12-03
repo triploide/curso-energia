@@ -5,6 +5,14 @@
 
 <?php $__env->startSection('head'); ?>
 	<script src="Form.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+	<!-- Styles -->
+	<link href="../css/jquery.filer.css" rel="stylesheet">
+
+	<!-- Jvascript -->
+	<script src="../js/jquery.filer.min.js" type="text/javascript"></script>
+	<script src="../js/custom.js" type="text/javascript"></script>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -34,7 +42,7 @@
 
 		<div class="form-group">
 			<label for="banner">Banner</label>
-			<input class="form-control" type="file" name="banner" id="banner" value="">
+		    <input type="file" name="files[]" id="banner" multiple>
 		</div>
 
 		<div class="form-group">
