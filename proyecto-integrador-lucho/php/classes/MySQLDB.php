@@ -4,7 +4,7 @@ namespace Base;
 
 class MySQLDB
 {
-	private $conn;
+	public $conn;
 
 	function __construct($host, $db, $user, $password)
 	{
@@ -93,6 +93,8 @@ class MySQLDB
 
 	public function delete($registro)
 	{
-		# code...
+		$sql = "DELETE FROM ". $registro->getNombre() ." WHERE id = " . $registro->getId();
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
 	}
 }
