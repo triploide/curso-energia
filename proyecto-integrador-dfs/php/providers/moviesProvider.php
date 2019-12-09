@@ -1,10 +1,12 @@
 <?php
 
-require '../conn.php';
+use Base\Movie;
 
-$stmt = $pdo->prepare('SELECT id, title, length FROM movies');
-$stmt->execute();
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+require_once __DIR__ . '/../config.php';
+require_once '../classes/Table.php';
+require_once '../classes/Movie.php';
+require_once '../classes/MySQLDB.php';
+$data = Movie::findAll();
 
 $response = [
 	'recordsTotal' => count($data),
