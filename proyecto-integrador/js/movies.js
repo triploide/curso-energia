@@ -9,12 +9,13 @@ $(document).ready(function () {
 
 		$('#aceptar-borrar').on('click', function () {
 			$.ajax({
-				url: 'movieDelete.php',
+				url: '/php/controllers/movieDelete.php',
 				type: 'POST',
 				data: {
 					id: id
 				},
 				success: function (response) {
+					$('#ventana').modal('hide');
 					ancla.parents('tr').fadeOut();
 				}
 			});
