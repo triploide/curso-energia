@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	$('#table-movies').on('click', 'a[data-id]', function (e) {
+	$('#table-genres').on('click', 'a[data-id]', function (e) {
 		e.preventDefault();
 		var ancla = $(this);
 		var id = $(this).data('id');
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 			$.ajax(
 					{
-						url:'/php/controllers/movieDelete.php',
+						url:'/php/controllers/genreDelete.php',
 						type:'POST',
 						data:{
 							id:id
@@ -56,7 +56,7 @@ $(document).ready(function () {
 	$('#table-movies').DataTable({
 		serverSide: true,
 		ajax: {
-			url: '../php/providers/moviesProvider.php',
+			url: '../php/providers/genresProvider.php',
 			data: function (data) {
 				//data.movie_id = 1;
 			}
