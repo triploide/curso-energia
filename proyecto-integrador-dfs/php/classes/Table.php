@@ -81,11 +81,11 @@ class Table
 		return $table;
 	}
 
-	public static function findAll()
+	public static function findAll($limit=null, $offset=null)
 	{
 		$class = get_called_class();
 		$table = new $class;
-		return $table->base->findAll($table);
+		return $table->base->findAll($table, $limit, $offset);
 	}
 
 	public function __get($atributo)
