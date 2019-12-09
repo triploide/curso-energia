@@ -78,7 +78,7 @@
 	        <p>¿Está seguro que desea borrar este elemento?</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">
+	        <button id="aceptar-borrar" type="button" class="btn btn-danger">
 	        	<span style="display: none" class="fa fa-spinner fa-spin"></span> 
 	        	Borrar
 	        </button>
