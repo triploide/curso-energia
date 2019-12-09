@@ -5,9 +5,35 @@ $(document).ready(function () {
 		var ancla = $(this);
 		var id = $(this).data('id');
 
-		setTimeout(function () {
+		/*setTimeout(function () {
 			ancla.parents('tr').fadeOut();
-		}, 2000)
+		}, 2000)*/
+
+		$('#ventana').modal('show');
+
+		$('#boton-borrar').on('click', function(){
+
+			$.ajax(
+					{
+						url:'/php/controllers/movieDelete.php',
+						type:'POST',
+						data:{
+							id:id
+						},
+						success: function(response){
+
+							ancla.parents('tr').fadeOut();
+						}
+
+
+
+					}
+
+
+
+
+				)
+		})
 
 		/*
 		ajax({
