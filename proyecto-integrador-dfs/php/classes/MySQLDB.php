@@ -16,9 +16,11 @@ class MySQLDB
 		}
 	}
 
-	public function findAll($registro)
+	public function findAll($registro, $limit=null, $offset=null)
 	{
 		$sql = 'SELECT * FROM ' . $registro->getNombre() . ' WHERE activa = 1';
+		if ($limit !== null) $sql .= ' LIMIT ' . $limit;
+		if ($offset !== null) $sql .= ' OFFSET ' . $offset;
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
