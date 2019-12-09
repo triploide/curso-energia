@@ -16,9 +16,12 @@ class MySQLDB
 		}
 	}
 
-	public function findAll()
+	public function findAll($registro)
 	{
-		# code...
+		$sql = 'SELECT * FROM ' . $registro->getNombre();
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public function find($id, $registro)
@@ -93,6 +96,8 @@ class MySQLDB
 
 	public function delete($registro)
 	{
-		# code...
+		$sql = "DELETE FROM ". $registro->getNombre() ." WHERE id = " . $registro->getId();
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
 	}
 }

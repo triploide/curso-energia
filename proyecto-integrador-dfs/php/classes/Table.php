@@ -9,7 +9,7 @@ class Table
 	protected $nombre;
 	protected $columnas;
 	protected $valores = [];
-	protected $id;
+	public $id;
 	protected $base;
 
 	public function __construct()
@@ -41,7 +41,7 @@ class Table
 
 	public function getColumna($columna)
 	{
-		return $this->valores[$columna];
+		return $this->valores[$columna] ?? '';
 	}
 
 	public function setColumna($columna, $valor)
@@ -58,6 +58,7 @@ class Table
 				$this->setColumna($columna, $data[$columna]);
 			}
 		}
+		$this->id = $data['id'];
 	}
 
 	public function save()
@@ -65,10 +66,44 @@ class Table
 		$this->base->save($this);
 	}
 
-	public function find($id)
+	public function delete()
 	{
-		$data = $this->base->find($id, $this);
-		$this->hydrate($data);
-		$this->id = $id;
+		$this->base->delete($this);
 	}
+
+	public static function find($id)
+	{
+		$class = get_called_class();
+		$table = new $class;
+		$data = $table->base->find($id, $table);
+		$table->hydrate($data);
+		$table->id = $id;
+		return $table;
+	}
+
+	public static function findAll()
+	{
+		$class = get_called_class();
+		$table = new $class;
+		return $table->base->findAll($table);
+	}
+
+	public function __get($atributo)
+	{
+		$valor = $this->getColumna($atributo);
+
+		if (in_array($atributo, $this->dates) && $valor) {
+			$valor = \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $valor);
+			$valor = $valor->format('d-m-Y');
+		}
+
+		return $valor;
+	}
+
+	/*
+	public function __set($atributo, $valor)
+	{
+		var_dump($atributo, $valor);
+	}
+	*/
 }
