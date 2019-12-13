@@ -33,9 +33,11 @@ $(document).ready(function () {
 			}
 		})
 		*/
-	})
+	});
 
-	$('#table-movies').DataTable({
+	console.log(9);
+
+	$('#table-genres').DataTable({
 		serverSide: true,
 		ajax: {
 			url: '/php/providers/genresProvider.php',
@@ -61,7 +63,7 @@ $(document).ready(function () {
 						</a>\
 					';
 				},
-				targets: 2
+				targets: 1
 			}
 		]
 	});

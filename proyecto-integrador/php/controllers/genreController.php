@@ -10,8 +10,8 @@ require_once '../classes/MySQLDB.php';
 $genre = ($_POST['id']) ? Genre::find($_POST['id']) : new Genre;
 
 $genre->setColumna('name', $_POST['name']);
-$genre->setColumna('raking', $_POST['raking']);
-$genre->setColumna('active', $_POST['active']);
+$genre->setColumna('ranking', $_POST['ranking']);
+$genre->setColumna('activa', $_POST['activa']);
 $genre->save();
 
-//header('location: ../../genres');
+header('location: ../../genres');

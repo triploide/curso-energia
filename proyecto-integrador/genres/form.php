@@ -10,36 +10,7 @@ require_once __DIR__ . '/../php/classes/Movie.php';
 require_once __DIR__ . '/../php/classes/Genre.php';
 require_once __DIR__ . '/../php/classes/MySQLDB.php';
 
-$findAll = Genre::findAll();
-
-$options = [];
-foreach ($findAll as $data) {
-	$options[$data['id']] = $data['name'];
-}
-
-echo '<pre>';
-var_dump($options); exit;
-
-
-/*
-$movie = new Movie;
-$movie->title = 'nuevo'; exit;
-*/
-
-$movie = (isset($_GET['id'])) ? Movie::find($_GET['id']) : new Movie;
-
-$files = [];
-
-foreach ($movie->files() as $file) {
-	$files[] = [
-		'id' => $file['id'],
-		'name' => $file['old_name'],
-		'size' => $file['size'],
-		'type' => $file['type']
-	];
-}
-
-
+$genre = (isset($_GET['id'])) ? Genre::find($_GET['id']) : new Genre;
 ?>
 
 <!DOCTYPE html>
@@ -69,13 +40,6 @@ foreach ($movie->files() as $file) {
             border-top: 1px solid #eee;
         }
     </style>
-
-	<!-- Jvascript -->
-	<script src="/js/jquery.filer.min.js" type="text/javascript"></script>
-	<script>
-		var files = <?php echo json_encode($files); ?>;
-	</script>
-	<script src="/js/movie.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -86,44 +50,26 @@ foreach ($movie->files() as $file) {
 				<?php include __DIR__ . '/../tpl/menu.php' ?>
 			</div>
 			<div class="col-md-9">
-				<form action="../php/controllers/movieController.php" method="POST" enctype="multipart/form-data">
+				<form action="../php/controllers/genreController.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="title">Título</label>
-						<input class="form-control" type="text" name="title" id="title" value="<?php echo $movie->title ?>">
-						<div class="invalid-feedback">La película ya existe</div>
+						<label for="title">Nombre</label>
+						<input class="form-control" type="text" name="name" id="name" value="<?php echo $genre->name ?>">
 					</div>
 
 					<div class="form-group">
-						<label for="length">Duración</label>
-						<input class="form-control" type="text" name="length" id="length" value="<?php echo $movie->length ?>">
-						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
+						<label for="title">Ranking</label>
+						<input class="form-control" type="text" name="ranking" id="ranking" value="<?php echo $genre->ranking ?>">
 					</div>
 
 					<div class="form-group">
-						<label for="rating">Rating</label>
-						<input class="form-control" type="text" name="rating" id="rating" value="<?php echo $movie->rating ?>">
-						<div class="invalid-feedback">Sólo se aceptan números sin decimales</div>
-					</div>
-
-					<div class="form-group">
-						<label for="release_date">Fecha de estreno</label>
-						<input class="form-control" type="text" name="release_date" id="release_date" value="<?php echo $movie->release_date ?>">
-					</div>
-
-					<div class="form-group">
-						<label for="banner">Banner</label>
-						<input class="form-control" type="file" name="banner[]" id="banner" value="">
-					</div>
-
-					<div class="form-group">
-						<label for="genre_id">Género</label>
-						<select class="form-control" name="genre_id" id="genre_id" >
-							<option value="">Seleccionar</option>
+						<label for="activa">Activo</label>
+						<select class="form-control" name="activa" id="activa">
+							<option value="0">No</option>
+							<option value="1">Si</option>
 						</select>
-						<div class="invalid-feedback">Tenés que seleccionar un género</div>
 					</div>
 
-					<input type="hidden" name="id" value="<?php echo $movie->id ?>">
+					<input type="hidden" name="id" value="<?php echo $genre->id ?>">
 
 					<div class="form-group d-flex mt-5 justify-content-end">
 						<button type="submit" class="btn btn-primary">Enviar</button>
