@@ -16,8 +16,14 @@
 				<a href="/genres/form.php" class="btn btn-primary">
 					Crear <span class="fa fa-plus"></span>
 				</a>
+
+				<a href="/php/exports/genreExport.php" class="btn btn-primary">
+					Exportar <span class="fa fa-download"></span>
+				</a>
 			</div>
 		</div>
+
+		<br>
 
 		<div class="row">
 			<div class="col-md-3">
