@@ -16,14 +16,19 @@ class MySQLDB
 		}
 	}
 
-	public function findAll()
+	public function findAll($registro, $limit=null, $offset=null)
 	{
-		# code...
+		$sql = 'SELECT * FROM ' . $registro->getNombre() . ' WHERE activa = 1';
+		if ($limit !== null) $sql .= ' LIMIT ' . $limit;
+		if ($offset !== null) $sql .= ' OFFSET ' . $offset;
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public function find($id, $registro)
 	{
-		$sql = 'SELECT * FROM ' . $registro->getNombre() . " WHERE id = $id LIMIT 1";
+		$sql = 'SELECT * FROM ' . $registro->getNombre() . " WHERE id = $id AND activa = 1 LIMIT 1";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -93,7 +98,7 @@ class MySQLDB
 
 	public function delete($registro)
 	{
-		$sql = "DELETE FROM ". $registro->getNombre() ." WHERE id = " . $registro->getId();
+		$sql = "UPDATE ". $registro->getNombre() ." SET activa = 0 WHERE id = " . $registro->getId();
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 	}

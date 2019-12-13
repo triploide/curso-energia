@@ -1,14 +1,14 @@
 <?php
 
-use Base\Movie;
+use Base\Genre;
 
 require_once __DIR__ . '/../config.php';
 require_once '../classes/Table.php';
-require_once '../classes/Movie.php';
+require_once '../classes/Genre.php';
 require_once '../classes/MySQLDB.php';
 
-$recordsFiltered = Movie::findAll($_GET['length'], $_GET['start']);
-$data = Movie::findAll();
+$recordsFiltered = Genre::findAll($_GET['length'], $_GET['start']);
+$data = Genre::findAll();
 
 $response = [
 	'recordsTotal' => count($data),

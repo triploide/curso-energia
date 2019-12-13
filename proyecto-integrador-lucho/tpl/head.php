@@ -21,4 +21,3 @@
 
 <!-- Styles -->
 <link href="/css/jquery.filer.css" rel="stylesheet">
-<script src="script.js"></script>
