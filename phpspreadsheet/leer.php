@@ -25,10 +25,10 @@ foreach ($sheet->getRowIterator(0, 1) as $row) {
 	$data = [];
 	$columnIterator = $row->getCellIterator('A', 'M');
 
-	$column = $columnIterator->current(); //pido la primer columna (acá en el excel es donde figura el año)
+	$primeraColumna = $columnIterator->current(); //pido la primer columna (acá en el excel es donde figura el año)
 
-	if ($index = $column->getCalculatedValue()) { //si la primer columna tiene valor (es decir si hay un año en esta fila)
-		foreach ($columnIterator as $column) { //entonces iteror cada columna y la guardo en el array de datos
+	if ($index = $primeraColumna->getCalculatedValue()) { //si la primer columna tiene valor (es decir si hay un año en esta fila)
+		 	foreach ($columnIterator as $column) { //entonces iteror cada columna y la guardo en el array de datos
 			$data[] = $column->getCalculatedValue();
 		}
 		$result[] = $data;
