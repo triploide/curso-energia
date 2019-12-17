@@ -74,11 +74,18 @@ class Table
 	public static function find($id)
 	{
 		$class = get_called_class();
-		$movie = new $class;
-		$data = $movie->base->find($id, $movie);
-		$movie->hydrate($data);
-		$movie->id = $id;
-		return $movie;
+		$table = new $class;
+		$data = $table->base->find($id, $table);
+		$table->hydrate($data);
+		$table->id = $id;
+		return $table;
+	}
+
+	public static function findAll($limit=null, $offset=null)
+	{
+		$class = get_called_class();
+		$table = new $class;
+		return $table->base->findAll($table, $limit, $offset);
 	}
 
 	public function __get($atributo)

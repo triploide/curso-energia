@@ -21,7 +21,7 @@ $sheet = $file->getActiveSheet(); //hoja activa del documento
 $result = [];
 
 //Iteramos sobre cada fila
-foreach ($sheet->getRowIterator(2) as $row) {
+foreach ($sheet->getRowIterator(0, 1) as $row) {
 	$data = [];
 	$columnIterator = $row->getCellIterator('A', 'M');
 
@@ -31,7 +31,7 @@ foreach ($sheet->getRowIterator(2) as $row) {
 		 	foreach ($columnIterator as $column) { //entonces iteror cada columna y la guardo en el array de datos
 			$data[] = $column->getCalculatedValue();
 		}
-		$result[$index] = $data;
+		$result[] = $data;
 	}
 }
 

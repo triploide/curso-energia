@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	$('#table-movies').on('click', 'a[data-id]', function (e) {
+	$('#table-genres').on('click', 'a[data-id]', function (e) {
 		e.preventDefault();
 		var ancla = $(this);
 		var id = $(this).data('id');
@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 		$('#aceptar-borrar').on('click', function () {
 			$.ajax({
-				url: '/php/controllers/movieDelete.php',
+				url: '/php/controllers/genreDelete.php',
 				type: 'POST',
 				data: {
 					id: id
@@ -38,7 +38,7 @@ $(document).ready(function () {
 	$('#table-movies').DataTable({
 		serverSide: true,
 		ajax: {
-			url: '../php/providers/moviesProvider.php',
+			url: '/php/providers/genresProvider.php',
 			data: function (data) {
 				//data.movie_id = 1;
 			}
@@ -46,15 +46,9 @@ $(document).ready(function () {
 		columnDefs: [
 			{
 				render: function (data, b, row) {
-					return row.title;
+					return row.name;
 				},
 				targets: 0
-			},
-			{
-				render: function (data, b, row) {
-					return row.length || 'Sin data';
-				},
-				targets: 1
 			},
 			{
 				render: function (data, b, row) {

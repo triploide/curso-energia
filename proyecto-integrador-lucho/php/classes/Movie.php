@@ -10,7 +10,7 @@ class Movie extends Table
 
 	public function files()
 	{
-		if ($this->id){
+		if ($this->id) {
 			$sql = 'SELECT * from files where movie_id = ' . $this->id;
 			$stmt = $this->base->conn->prepare($sql);
 			$stmt->execute();
